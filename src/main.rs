@@ -3,6 +3,8 @@ use rand::random;
 fn main() {
     let first = [
         "Champ,",
+        "Chef,",
+        "King,",
         "Fact:",
         "Everybody says",
         "Dang",
@@ -14,6 +16,7 @@ fn main() {
         "Know this:",
         "News alert:",
         "Girl,",
+        "Boy,",
         "Ace,",
         "Excuse me but",
         "Experts agree:",
@@ -85,10 +88,13 @@ fn main() {
         "so get used to it.",
     ];
 
+    let stdout = std::io::stdout();
+    let mut out = stdout.lock();
+
     for list in [first, second, third, forth] {
         let n = random::<usize>() % list.len();
         let sentence = list[n];
-        print!("{sentence} ");
+        write!(&mut out, "{sentence} ");
     }
     println!();
 }
